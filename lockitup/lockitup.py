@@ -185,7 +185,9 @@ class LockItUp(commands.Cog):
         try:
             confirm_lock = await ctx.bot.wait_for("message", check=check, timeout=30)
             if confirm_lock.content.lower() != "yes":
-                return await ctx.send("Looks like we aren't unlocking this thing today")
+                return await ctx.send(
+                    "Good thing I was made for my time to be wasted - canceling lockdown..."
+                )
         except asyncio.TimeoutError:
             return await ctx.send("You took too long to reply!")
 
@@ -911,7 +913,7 @@ class LockItUp(commands.Cog):
         music_channels = await self.config.guild(guild).music_channels()
         if not voice_channels or not music_channels:
             return await ctx.send(
-                "You need to add some channels to your configuration using `{}lds setvc|setmusic` to use this"
+                f"You need to add some channels to your configuration using `{ctx.prefix}lds setvc|setmusic` to use this"
             )
         role = guild.default_role
         if voice_channels is not None:
@@ -981,7 +983,7 @@ class LockItUp(commands.Cog):
         music_channels = await self.config.guild(guild).music_channels()
         if not voice_channels or not music_channels:
             return await ctx.send(
-                "You need to add some channels to your configuration using `{}lds setvc|setmusic` to use this"
+                f"You need to add some channels to your configuration using `{ctx.prefix}lds setvc|setmusic` to use this"
             )
         role = guild.default_role
         if voice_channels is not None:
