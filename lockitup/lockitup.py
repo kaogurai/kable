@@ -1078,7 +1078,7 @@ class LockItUp(commands.Cog):
 
         await self.voice_channel_unlock(ctx=ctx, guild=guild, author=author)
 
-    @commands.command(name="lockit", aliases=["lockchan"])
+    @commands.command(name="lockit", aliases=["lockchan", "lock"])
     @checks.mod_or_permissions(manage_messages=True)
     @checks.bot_has_permissions(manage_channels=True)
     @commands.guild_only()
@@ -1130,7 +1130,7 @@ class LockItUp(commands.Cog):
             return await ctx.send("Error: Bot doesn't have perms to adjust that channel.")
         await ctx.send("Done. Locked {}".format(channel.mention))
 
-    @commands.command(name="unlockit", aliases=["ulockchan"])
+    @commands.command(name="unlockit", aliases=["ulockchan", "unlock"])
     @checks.mod_or_permissions(manage_messages=True)
     @checks.bot_has_permissions(manage_channels=True)
     @commands.guild_only()
